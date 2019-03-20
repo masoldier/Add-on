@@ -1,6 +1,6 @@
 # Add-on Kit
 
-Code and Summary files for different sensor modules
+Code and Summary files for different sensor modules. Navigate to the "summary.md" file to gain access to the documentation.
 
 ### Things covered
 
@@ -9,5 +9,3 @@ Code and Summary files for different sensor modules
 * Connection with Arduino
 * Code
 * Possible applications
-
-Navigate to the "summary.md" file to gain access to the documentation.
