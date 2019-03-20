@@ -7,9 +7,9 @@ const int S0 = 4, S1 = 5, S2 = 6, S3 = 7;
 const int sensorOut = 8;
 
 // Stores frequency read by the photodiodes
-int redFrequency = 0;
-int greenFrequency = 0;
-int blueFrequency = 0;
+int redF = 0;
+int greenF = 0;
+int blueF = 0;
 
 void setup() 
 {
