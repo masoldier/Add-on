@@ -1,5 +1,6 @@
 /* Arduino code for determining the basic 
-RED, GREEN and BLUE colors */
+RED, GREEN and BLUE colors and printing the 
+detected color on serial monitor */
 
 // TCS3200 pins wiring to Arduino
 const int S0 = 4, S1 = 5, S2 = 6, S3 = 7;
@@ -10,7 +11,8 @@ int redFrequency = 0;
 int greenFrequency = 0;
 int blueFrequency = 0;
 
-void setup() {
+void setup() 
+{
   // Setting the outputs
   pinMode(S0, OUTPUT);
   pinMode(S1, OUTPUT);
@@ -27,40 +29,39 @@ void setup() {
    // Begins serial communication 
   Serial.begin(9600);
 }
-void loop() {
+
+void loop() 
+{
   // Setting RED (R) filtered photodiodes to be read
   digitalWrite(S2,LOW);
   digitalWrite(S3,LOW);
-  
-  // Reading the output frequency
-  redFrequency = pulseIn(sensorOut, LOW);
-  
-   // Printing the RED (R) value
-  Serial.print("R = ");
-  Serial.print(redFrequency);
-  delay(100);
+  redF = pulseIn(sensorOut,LOW);
   
   // Setting GREEN (G) filtered photodiodes to be read
   digitalWrite(S2,HIGH);
   digitalWrite(S3,HIGH);
-  
-  // Reading the output frequency
-  greenFrequency = pulseIn(sensorOut, LOW);
-  
-  // Printing the GREEN (G) value  
-  Serial.print(" G = ");
-  Serial.print(greenFrequency);
-  delay(100);
+  greenF = pulseIn(sensorOut,LOW);
  
   // Setting BLUE (B) filtered photodiodes to be read
   digitalWrite(S2,LOW);
   digitalWrite(S3,HIGH);
+  blueF = pulseIn(sensorOut,LOW);
+
+  if(greenF > redF && blueF > redF && redF <= 35)
+  {
+    Serial.println("RED color detected");
+  }
+
+  else if(greenF > blueF && redF > blueF && blueF <= 35)
+  {
+    Serial.println("BLUE color detected");
+  }
   
-  // Reading the output frequency
-  blueFrequency = pulseIn(sensorOut, LOW);
-   
-  // Printing the BLUE (B) value 
-  Serial.print(" B = ");
-  Serial.println(blueFrequency);
-  delay(100);
+  else if(blueF <= 45 && redF > greenF && greenF <= 50)
+  {
+    Serial.println("GREEN color detected");
+  }
+  
+  else
+    ;
 }
