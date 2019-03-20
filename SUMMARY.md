@@ -1,5 +1,5 @@
 # Table of contents
 
-* [Home](README.md)
+* [Add-on Kit](README.md)
 * [Color Sensor](color-sensor.md)
 
