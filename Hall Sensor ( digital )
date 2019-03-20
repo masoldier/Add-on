@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<LiquidCrystal.h>
+LiquidCrystal lcd(13,12,8,7,4,2);
+int hall;
+
+void setup()
+{
+
+                  lcd.begin(16,2);
+                  pinMode(6,INPUT);
+
+}
+
+void loop() 
+{
+
+                 
+                  hall= digitalRead(6);
+                  lcd.setCursor(0,0);
+                  lcd.print("hall value is");
+                  lcd.setCursor(0,1);
+                  lcd.print(hall);
+  
+
+}
