@@ -34,7 +34,6 @@ void loop() {
   
   // Reading the output frequency
   redFrequency = pulseIn(sensorOut, LOW);
-  redFrequency = map(redFrequency, 30, 300, 100, 0);
   
    // Printing the RED (R) value
   Serial.print("R = ");
@@ -47,7 +46,6 @@ void loop() {
   
   // Reading the output frequency
   greenFrequency = pulseIn(sensorOut, LOW);
-  greenFrequency = map(greenFrequency, 30, 300, 100, 0);
   
   // Printing the GREEN (G) value  
   Serial.print(" G = ");
@@ -60,7 +58,6 @@ void loop() {
   
   // Reading the output frequency
   blueFrequency = pulseIn(sensorOut, LOW);
-  blueFrequency = map(blueFrequency, 30, 300, 100, 0);
    
   // Printing the BLUE (B) value 
   Serial.print(" B = ");
