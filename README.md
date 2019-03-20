@@ -1,6 +1,6 @@
 # Add-on Kit
 
-Here in this document, we have outlined the know-how of each sensor module.
+Code and Summary files for different sensor modules
 
 ### Things covered
 
@@ -10,3 +10,4 @@ Here in this document, we have outlined the know-how of each sensor module.
 * Code
 * Possible applications
 
+Navigate to the "summary.md" file to gain access to the documentation.
