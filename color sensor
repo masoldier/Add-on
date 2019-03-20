@@ -1,5 +1,7 @@
-// TCS3200 pins wiring to Arduino
+/* Arduino code for determining the basic 
+RED, GREEN and BLUE colors */
 
+// TCS3200 pins wiring to Arduino
 const int S0 = 4, S1 = 5, S2 = 6, S3 = 7;
 const int sensorOut = 8;
 
@@ -45,7 +47,7 @@ void loop() {
   
   // Reading the output frequency
   greenFrequency = pulseIn(sensorOut, LOW);
-  redFrequency = map(redFrequency, 30, 300, 100, 0);
+  greenFrequency = map(greenFrequency, 30, 300, 100, 0);
   
   // Printing the GREEN (G) value  
   Serial.print(" G = ");
@@ -58,7 +60,8 @@ void loop() {
   
   // Reading the output frequency
   blueFrequency = pulseIn(sensorOut, LOW);
-  
+  blueFrequency = map(blueFrequency, 30, 300, 100, 0);
+   
   // Printing the BLUE (B) value 
   Serial.print(" B = ");
   Serial.println(blueFrequency);
