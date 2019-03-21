@@ -8,5 +8,5 @@ Code and Summary files for different sensor modules. Navigate to the SUMMARY.md 
 * Pin diagram
 * Connection with Arduino
 * Code
-* Possible applications
+* Output
 
