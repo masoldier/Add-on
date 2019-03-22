@@ -35,28 +35,37 @@ void loop()
   // Setting RED (R) filtered photodiodes to be read
   digitalWrite(S2,LOW);
   digitalWrite(S3,LOW);
+  
+  // reading the output frequency of the RED color
   redF = pulseIn(sensorOut,LOW);
   
   // Setting GREEN (G) filtered photodiodes to be read
   digitalWrite(S2,HIGH);
   digitalWrite(S3,HIGH);
+  
+  // reading the output frequency of the GREEN color
   greenF = pulseIn(sensorOut,LOW);
  
   // Setting BLUE (B) filtered photodiodes to be read
   digitalWrite(S2,LOW);
   digitalWrite(S3,HIGH);
+  
+  // reading the output frequency of the BLUE color
   blueF = pulseIn(sensorOut,LOW);
-
+  
+  //condition for detecting RED color
   if(greenF > redF && blueF > redF && redF <= 35)
   {
     Serial.println("RED color detected");
   }
 
+  //condition for detecting BLUE color
   else if(greenF > blueF && redF > blueF && blueF <= 35)
   {
     Serial.println("BLUE color detected");
   }
-  
+ 
+  //condition for detecting GREEN color
   else if(blueF <= 45 && redF > greenF && greenF <= 50)
   {
     Serial.println("GREEN color detected");
