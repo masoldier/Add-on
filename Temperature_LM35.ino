@@ -12,6 +12,8 @@ void setup()
 {
   // set A0 as an INPUT pin
   pinMode(tempPin, INPUT);
+  // begin serial communication
+  Serial.begin(9600);
 }
 
 void loop() 
@@ -20,7 +22,7 @@ void loop()
   temp = analogRead(A0);
  
   // convert sensor reading into degrees celsius
-  float cel = (temp*500)/1024;
+  float cel = (temp/1024.0)*500;
   
   // print the calculated value on the serial monitor
   Serial.print("TEMPRATURE = ");
