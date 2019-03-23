@@ -1,25 +1,29 @@
-#include<stdio.h>
-#include<LiquidCrystal.h>
-LiquidCrystal lcd(13,12,8,7,4,2);
-int hall;
+/* Arduino code for determining the magnetic 
+and printing the output of the hall sensor 
+on serial monitor */
 
-void setup()
-{
+int hall;                         
+void setup() {
 
-                  lcd.begin(16,2);
-                  pinMode(6,INPUT);
-
+      Serial.begin(9600);
+      pinMode(7,INPUT);
+      \\ Taking the inptu from pin 7 of arduino
 }
 
-void loop() 
-{
-
-                 
-                  hall= digitalRead(6);
-                  lcd.setCursor(0,0);
-                  lcd.print("hall value is");
-                  lcd.setCursor(0,1);
-                  lcd.print(hall);
-  
-
-}
+void loop() {
+              Serial.read();
+              hall= digitalRead(7);
+              \\ Copying data in the 7th pin to hall
+              if(hall==HIGH)
+              {
+                Serial.print("No Magnetic field then output of the hall sensor is one(1)");
+                Serial.println(hall);
+                delay(500);
+              }
+             else if(hall==LOW)
+              {
+                Serial.print(" Magnetic field output of the sensor is zero(0)");
+                Serial.println(hall);
+                delay(500);
+              }
+            }
