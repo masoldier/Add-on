@@ -1,40 +1,30 @@
 /* Arduino code for displaying LM35 
-Temprature sensor reading on an 16x2 LCD display */
+Temprature sensor reading on the serial monitor */
 
-//Connect out pin of LM35 to A0 pin of Arduino
+// connect OUT pin of sensor module to A0 of SPduino
+const int tempPin = A0;
 
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(13, 12, 8, 7, 4, 2);
+// initialize the required variables
+int temp = 0;
+float cel = 0;
 
-int Temp;
-void setup() {
-  lcd.begin(16, 2);
-  pinMode(A0, INPUT);
-  
+void setup() 
+{
+  // set A0 as an INPUT pin
+  pinMode(tempPin, INPUT);
 }
 
-void loop() {
-  Temp = analogRead(A0);
-  lcd.clear();
-  lcd.setCursor(0, 0);
+void loop() 
+{
+  // Get the temprature reading and store it in a variable
+  temp = analogRead(A0);
+ 
+  // convert sensor reading into degrees celsius
+  float cel = (temp*500)/1024;
   
-float mv = ( Temp/1024.0)*5000; 
-float cel = mv/10;
-float farh = (cel*9)/5 + 32;
-
-Serial.print("TEMPRATURE = ");
-Serial.print(cel);
-Serial.print("*C");
-lcd.print("TEMPERATURE");
-lcd.setCursor(0,1);
-lcd.print(cel);
-lcd.print("*c");
-lcd.setCursor(9,1);
-lcd.print(farh);
-lcd.print("*F");
-lcd.setCursor(0,0);
-Serial.println();
-delay(1000);
-
-
+  // print the calculated value on the serial monitor
+  Serial.print("TEMPRATURE = ");
+  Serial.print(cel);
+  Serial.println("*C");
+  delay(1000);
 }
