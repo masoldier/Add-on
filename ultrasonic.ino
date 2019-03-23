@@ -1,35 +1,40 @@
-const unsigned int TRIG_PIN=5;
-const unsigned int ECHO_PIN=6;
-const unsigned int BAUD_RATE=9600;
-
-
+int trigPin = 5;    // Trigger
+int echoPin = 6;    // Echo
+long duration, cm, inches;
+ 
 void setup() {
-  pinMode(TRIG_PIN, OUTPUT);
-  pinMode(ECHO_PIN, INPUT);
-  Serial.begin(BAUD_RATE);
+  //Serial Port begin
+  Serial.begin (9600);
+  //Define inputs and outputs
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+ 
+void loop() {
+  // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
+  // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+ 
+  // Read the signal from the sensor: a HIGH pulse whose
+  // duration is the time (in microseconds) from the sending
+  // of the ping to the reception of its echo off of an object.
+  pinMode(echoPin, INPUT);
+  duration = pulseIn(echoPin, HIGH);
+ 
+  // Convert the time into a distance
+  cm = (duration/2) / 29.1;     // Divide by 29.1 or multiply by 0.0343
+  inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
   
+  Serial.print(inches);
+  Serial.print("in, ");
+  Serial.print(cm);
+  Serial.print("cm");
+  Serial.println();
+  
+  delay(250);
 }
 
-void loop() {
-  digitalWrite(TRIG_PIN, LOW);
-  delayMicroseconds(2);
-  digitalWrite(TRIG_PIN, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(TRIG_PIN, LOW);
-  
-
- const unsigned long duration= pulseIn(ECHO_PIN, HIGH);
- int distance= duration/29/2;
- if(duration==0){
-   Serial.println("Warning: no pulse from sensor");
-   
-   } 
-  else{
-     
-      Serial.print("distance to nearest object:");
-      Serial.println(distance);
-      Serial.println(" cm");
-     
-  }
- delay(100);
- }
