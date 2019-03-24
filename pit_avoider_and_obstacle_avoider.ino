@@ -1,7 +1,7 @@
 int ls;
 int cs;
 int rs;
-int us=9;
+int us=9;// Distance to an object is determined to 9cm
 int lmt1=5;
 int lmt2=3;
 int rmt1=6;
